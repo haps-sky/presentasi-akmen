@@ -45,7 +45,7 @@
 </div></header>
 <div class="layout">
   <nav class="nav" aria-label="Daftar isi"><strong>Daftar isi</strong>
-    <a href="#inti">1. Inti tugas</a><a href="#rumusan">2. Rumusan masalah</a><a href="#biaya">3. Jenis biaya</a><a href="#cvp">4. Cara kerja CVP</a><a href="#simulasi">5. Simulasi ICE vs EV</a><a href="#tarif">6. Jika tarif turun</a><a href="#kinerja">7. Evaluasi laba</a><a href="#presentasi">8. Bahan presentasi</a><a href="#slides">9. PPT</a>
+    <a href="#inti">1. Inti tugas</a><a href="#rumusan">2. Rumusan masalah</a><a href="#biaya">3. Jenis biaya</a><a href="#cvp">4. Cara kerja CVP</a><a href="#week4">4A. Ringkasan Week 4</a><a href="#simulasi">5. Simulasi ICE vs EV</a><a href="#tarif">6. Jika tarif turun</a><a href="#kinerja">7. Evaluasi laba</a><a href="#presentasi">8. Bahan presentasi</a><a href="#slides">9. PPT</a>
   </nav>
   <main>
     <section class="section" id="inti">
@@ -100,7 +100,84 @@
       <p class="small">CVP mengasumsikan kondisi seperti tarif, biaya per unit aktivitas, dan bauran layanan cukup stabil dalam rentang analisis. Jika asumsi ini tidak terpenuhi, hasilnya harus dibaca dengan hati-hati.</p>
     </section>
 
-    <section class="section" id="simulasi">
+    <section class="section" id="week4">
+<h2>Ringkasan Materi Kuliah: Week 4 — CVP Analysis</h2>
+<p class="lead">Bagian ini diringkas dari PDF kuliah <b>Week 4: CVP Analysis — A Managerial Planning Tool</b>. Tujuannya supaya konsep di silabus bukan cuma dihafal, tetapi dipahami dan bisa diterapkan ke studi kasus Bluebird.</p>
+<div class="callout blue"><b>Gagasan utama CVP:</b> laba berubah ketika harga jual, jumlah aktivitas/penjualan, biaya variabel, atau biaya tetap berubah. CVP membantu manajemen memperkirakan dampak perubahan itu terhadap laba.</div>
+
+<h3>1. Persamaan dasar CVP</h3>
+<div class="formula">Laba operasi = Pendapatan − Total biaya variabel − Total biaya tetap</div>
+<p>Artinya, pendapatan dikurangi dahulu dengan biaya yang mengikuti aktivitas. Sisa pendapatan itu dipakai untuk menutup biaya tetap. Jika masih ada sisa, perusahaan memperoleh laba operasi; jika tidak cukup, perusahaan rugi.</p>
+
+<h3>2. Margin kontribusi dan rasionya</h3>
+<div class="grid2">
+ <div class="mini"><h3>Margin kontribusi (CM)</h3><div class="formula">CM = Pendapatan − Biaya variabel</div><p>Menunjukkan berapa rupiah yang tersisa untuk menutup biaya tetap dan menghasilkan laba.</p></div>
+ <div class="mini"><h3>Rasio margin kontribusi</h3><div class="formula">CM ratio = CM ÷ Pendapatan</div><p>Menunjukkan porsi setiap Rp1 pendapatan yang tersedia untuk menutup biaya tetap dan laba.</p></div>
+</div>
+<p><b>Contoh dari konsep kuliah:</b> jika pendapatan Rp100 dan biaya variabel Rp60, margin kontribusi Rp40 dan CM ratio 40%. Jika biaya tetap Rp25, laba operasinya Rp15.</p>
+
+<h3>3. Break-even point (BEP) atau titik impas</h3>
+<p>BEP adalah tingkat penjualan ketika laba operasi sama dengan nol. Pada titik ini, margin kontribusi tepat menutup seluruh biaya tetap.</p>
+<div class="grid2">
+ <div class="mini"><h3>BEP dalam unit aktivitas</h3><div class="formula">BEP unit = Biaya tetap ÷ (Harga/unit − Biaya variabel/unit)</div><p>Cocok bila harga dan biaya diketahui per unit, misalnya per perjalanan atau kilometer yang didefinisikan konsisten.</p></div>
+ <div class="mini"><h3>BEP dalam rupiah penjualan</h3><div class="formula">BEP penjualan = Biaya tetap ÷ CM ratio</div><p>Cocok bila analisis dilakukan berdasarkan total pendapatan.</p></div>
+</div>
+<div class="callout"><b>Kaitan dengan Bluebird:</b> jika model menggunakan biaya per kilometer, BEP dapat dihitung dalam kilometer. Namun, hasilnya hanya dapat dipercaya sejauh tarif dan perilaku biaya per kilometer diasumsikan konsisten.</div>
+
+<h3>4. Target laba</h3>
+<p>CVP juga dipakai untuk menghitung berapa unit aktivitas atau pendapatan yang diperlukan agar target laba tertentu tercapai. Dalam rumus, target laba ditambahkan ke biaya tetap karena perusahaan harus menutup biaya tetap sekaligus memperoleh laba tersebut.</p>
+<div class="grid2">
+ <div class="mini"><h3>Target unit</h3><div class="formula">Unit target = (Biaya tetap + Target laba) ÷ CM per unit</div></div>
+ <div class="mini"><h3>Target pendapatan</h3><div class="formula">Pendapatan target = (Biaya tetap + Target laba) ÷ CM ratio</div></div>
+</div>
+<p>Untuk kasus Bluebird, targetnya dapat berupa laba operasi per kendaraan per tahun atau laba operasi tingkat perusahaan. Pastikan satuan, periode, dan cakupan biaya sama.</p>
+
+<h3>5. Perubahan pendapatan dan dampaknya ke laba</h3>
+<div class="formula">Perubahan laba ≈ CM ratio × Perubahan pendapatan</div>
+<p>Hubungan ini berlaku dengan asumsi biaya tetap tidak berubah dan CM ratio tetap. Ini berguna untuk memperkirakan dampak perubahan penjualan dalam model CVP.</p>
+<p class="small">Penting: penurunan tarif dan penurunan volume bukan hal yang sama. Untuk penurunan tarif, hitung ulang pendapatan serta biaya variabel yang memang berubah bersama tarif. Jangan memakai DOL seolah-olah harga turun sama dengan volume turun.</p>
+
+<h3>6. Margin of safety (MOS)</h3>
+<div class="formula">MOS (Rp) = Pendapatan aktual − BEP penjualan<br>MOS (%) = (Pendapatan aktual − BEP penjualan) ÷ Pendapatan aktual × 100%</div>
+<p>MOS menunjukkan seberapa jauh pendapatan berada di atas titik impas. Semakin kecil MOS, semakin tipis bantalan perusahaan jika pendapatan turun. Dalam analisis per unit kendaraan, MOS juga dapat dihitung menggunakan jarak tempuh aktual dikurangi BEP kilometer, dibagi jarak tempuh aktual.</p>
+
+<h3>7. Degree of operating leverage (DOL)</h3>
+<div class="formula">DOL = Margin kontribusi ÷ Laba operasi</div>
+<p>DOL mengukur sensitivitas laba operasi terhadap perubahan aktivitas/volume. Dalam rentang dan asumsi CVP yang sesuai, DOL yang tinggi berarti perubahan volume kecil dapat menyebabkan perubahan laba yang lebih besar secara persentase.</p>
+<div class="callout red"><b>Jangan salah gunakan DOL:</b> DOL terutama untuk perubahan volume/aktivitas. Jika pertanyaannya adalah perang tarif, perubahan harga perlu dihitung langsung dengan model pendapatan dan biaya yang sesuai.</div>
+
+<h3>8. Analisis sensitivitas atau “what-if”</h3>
+<p>Materi kuliah menekankan bahwa harga, biaya, dan jumlah penjualan masa depan tidak pasti. Karena itu, manajemen sebaiknya tidak hanya memakai satu angka BEP, tetapi juga menguji rentang kemungkinan dan skenario.</p>
+<div class="tablewrap"><table><thead><tr><th>Contoh skenario Bluebird</th><th>Yang diubah</th><th>Yang diamati</th></tr></thead><tbody>
+<tr><td>Tarif turun 5% atau 10%</td><td>Harga per kilometer</td><td>CM/km, laba, dan BEP km setelah biaya yang terpengaruh dihitung ulang</td></tr>
+<tr><td>Jarak tempuh turun 10%</td><td>Volume aktivitas</td><td>Laba operasi ketika biaya variabel mengikuti kilometer tetapi biaya tetap tidak berubah</td></tr>
+<tr><td>Biaya listrik/BBM naik</td><td>Biaya variabel per km</td><td>CM/km dan titik impas</td></tr>
+<tr><td>Biaya tetap meningkat</td><td>Penyusutan, asuransi, atau biaya fasilitas yang relevan</td><td>BEP dan MOS</td></tr>
+</tbody></table></div>
+
+<h3>9. Grafik profit-volume dan CVP</h3>
+<p>Dalam materi, grafik profit-volume menggambarkan hubungan antara laba operasi dan jumlah unit yang dijual atau tingkat aktivitas. Grafik membantu memperlihatkan titik impas, area rugi di bawah BEP, dan area laba di atas BEP. Grafik CVP juga dapat membandingkan pendapatan total dan total biaya terhadap volume.</p>
+<p>Untuk Bluebird, grafik sederhana dapat memakai sumbu horizontal berupa kilometer perjalanan per tahun dan sumbu vertikal berupa laba operasi simulasi. Garis laba memotong angka nol pada BEP. Grafik hanya sah untuk asumsi biaya dan tarif yang dipakai dalam model.</p>
+
+<h3>10. CVP untuk banyak produk atau segmen</h3>
+<p>Perusahaan yang menjual lebih dari satu layanan harus mempertimbangkan <b>sales mix</b>, yaitu komposisi relatif layanan yang dijual. Bila komposisinya berubah, rata-rata margin kontribusi juga bisa berubah sehingga BEP dapat ikut berubah.</p>
+<div class="grid2">
+ <div class="mini"><h3>Biaya tetap langsung</h3><p>Dapat ditelusuri ke segmen tertentu dan dapat dihindari jika segmen itu dihentikan.</p></div>
+ <div class="mini"><h3>Biaya tetap bersama</h3><p>Tidak dapat ditelusuri langsung ke satu segmen dan mungkin tetap ada walaupun suatu segmen dihilangkan.</p></div>
+</div>
+<p>Materi kuliah menjelaskan BEP multi-produk dengan menghitung paket berdasarkan sales mix, lalu membagi total biaya tetap dengan margin kontribusi per paket. Untuk Bluebird, ini berarti taksi dan non-taksi tidak boleh dicampur sembarangan apabila tarif turun hanya memengaruhi segmen taksi.</p>
+
+<h3>11. Asumsi utama CVP yang perlu diingat</h3>
+<ul class="checklist">
+ <li>Pendapatan dan biaya dianggap linear dalam rentang aktivitas yang dianalisis.</li>
+ <li>Harga jual dan biaya diketahui dengan cukup pasti untuk skenario yang dihitung.</li>
+ <li>Jumlah unit yang diproduksi/dioperasikan diasumsikan terjual atau menghasilkan pendapatan sesuai model; persediaan tidak mengubah analisis sederhana.</li>
+ <li>Untuk banyak produk/layanan, sales mix diasumsikan diketahui dan stabil.</li>
+</ul>
+<p class="small"><b>Sumber materi:</b> PDF kuliah “Week 4 — CVP Analysis: A Managerial Planning Tool”, terutama halaman 3–8 (persamaan dasar, asumsi, BEP, margin kontribusi dan target laba), 10–16 (perubahan laba, grafik, MOS, DOL dan sensitivitas), serta 22–24 (multi-produk dan sales mix). Ini ringkasan materi yang diunggah pengguna; penerapan ke Bluebird adalah penjelasan dan contoh untuk tugas.</p>
+</section>
+
+<section class="section" id="simulasi">
       <h2>5. Simulasi ICE versus EV</h2>
       <p>Berikut ilustrasi dari angka yang muncul di draft presentasi. Angka selain tarif yang dirujuk ke publikasi <b>merupakan asumsi latihan</b>, bukan biaya internal Bluebird. Ubah angkanya untuk melihat dampak terhadap hasil.</p>
       <p><span class="pill assume">Asumsi simulasi</span> Tarif ICE Rp5.660/km menggunakan bauran jarak asumsi; tarif EV Rp6.300/km; komisi 45%; biaya variabel non-pengemudi ICE Rp1.133/km dan EV Rp567/km; biaya tetap tahunan ICE Rp64,8 juta dan EV Rp102 juta; jarak tahunan 45.000 km.</p>
