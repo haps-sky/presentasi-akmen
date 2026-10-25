@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Belajar CVP lewat Kasus Bluebird</title>
+<style>
+:root{--navy:#102b4b;--blue:#126da5;--gold:#f0b236;--ink:#253345;--muted:#64748b;--bg:#f3f6fa;--card:#fff;--line:#dce4ed;--green:#24734b;--red:#b3261e;--softblue:#eaf4fb;--softgold:#fff5dc}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}.hero{background:linear-gradient(120deg,var(--navy),#174f78);color:#fff;padding:42px 22px 38px;border-bottom:6px solid var(--gold)}.wrap{max-width:1080px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:#f5ce70;font-weight:800}.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;margin:.5rem 0 1rem;max-width:850px}.hero p{max-width:800px;color:#e4edf5;margin:0}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{border:1px solid #ffffff50;border-radius:999px;padding:5px 10px;font-size:.83rem}.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:22px;max-width:1080px;margin:22px auto;padding:0 16px}.nav{position:sticky;top:14px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}.nav strong{display:block;margin:4px 8px 8px;color:var(--navy)}.nav a{display:block;text-decoration:none;color:var(--ink);padding:8px 10px;border-radius:9px;font-size:.92rem}.nav a:hover{background:var(--softblue);color:var(--blue)}main{min-width:0}.section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(18px,3vw,28px);margin-bottom:18px;box-shadow:0 4px 16px #1432540a}.section h2{color:var(--navy);margin:0 0 12px;line-height:1.25;font-size:1.45rem}.section h3{color:var(--blue);margin:20px 0 7px;font-size:1.08rem}.lead{font-size:1.05rem}.callout{padding:14px 16px;border-left:4px solid var(--gold);background:var(--softgold);border-radius:8px;margin:14px 0}.callout.blue{border-color:var(--blue);background:var(--softblue)}.callout.red{border-color:var(--red);background:#fff0ef}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mini{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}.mini h3{margin:0 0 6px}.number{font-size:1.5rem;font-weight:850;color:var(--navy)}.steps{counter-reset:n;display:grid;gap:10px}.step{counter-increment:n;border:1px solid var(--line);padding:13px 14px 13px 53px;border-radius:12px;position:relative}.step:before{content:counter(n);position:absolute;left:14px;top:13px;width:27px;height:27px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#f1f5f9;border:1px solid var(--line);border-radius:9px;padding:12px;overflow-wrap:anywhere;font-size:.97rem}.tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.94rem;margin:12px 0}th,td{padding:10px 11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:var(--navy);color:#fff}tbody tr:nth-child(even){background:#f7f9fc}.small{font-size:.88rem;color:var(--muted)}.pill{display:inline-block;border-radius:100px;padding:3px 8px;font-size:.78rem;font-weight:750}.pill.assume{background:#fff0cd;color:#835800}.pill.actual{background:#e1f4e8;color:#1f6a42}.calc{background:#f7faff;border:1px solid #cbdbea;border-radius:14px;padding:16px}.controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;font-size:.9rem;font-weight:700;margin-bottom:5px}.field input{width:100%;padding:10px;border:1px solid #becbd8;border-radius:8px;font:inherit;background:#fff}.field small{display:block;color:var(--muted);font-size:.8rem;margin-top:3px}.results{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.result{background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px}.result .label{font-size:.82rem;color:var(--muted)}.result .value{font-size:1.25rem;font-weight:850;color:var(--navy);overflow-wrap:anywhere}.btn{border:0;border-radius:9px;background:var(--blue);color:#fff;padding:10px 15px;font:inherit;font-weight:750;cursor:pointer;margin-top:10px}.btn:hover{filter:brightness(.93)}.scenario-buttons{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.scenario-buttons button{border:1px solid #b8c9d9;background:#fff;color:var(--navy);border-radius:8px;padding:8px 12px;font:inherit;cursor:pointer}.scenario-buttons button.active{background:var(--navy);color:#fff}.barrow{display:grid;grid-template-columns:100px 1fr 70px;align-items:center;gap:9px;margin:9px 0;font-size:.9rem}.barbg{height:14px;background:#e5ebf2;border-radius:99px;overflow:hidden}.bar{height:100%;background:var(--blue);width:0;transition:width .2s}.bar.ev{background:var(--gold)}.foot{max-width:1080px;margin:0 auto;padding:0 18px 32px;color:var(--muted);font-size:.85rem}.source{overflow-wrap:anywhere}.checklist li{margin-bottom:7px}details{border:1px solid var(--line);border-radius:10px;padding:11px 14px;margin:10px 0;background:#fff}summary{font-weight:750;cursor:pointer;color:var(--navy)}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.nav{position:relative;top:auto}.nav a{display:inline-block}.grid2,.controls,.results{grid-template-columns:1fr}.barrow{grid-template-columns:76px 1fr 58px}.hero{padding-top:30px}}
+@media print{body{background:#fff}.hero{padding:22px;background:var(--navy)!important;print-color-adjust:exact}.layout{display:block}.nav{display:none}.section{box-shadow:none;break-inside:avoid}.btn,.scenario-buttons{display:none}.section{margin-bottom:10px}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Akuntansi Manajerial · Sesi 9</div>
+  <h1>Memahami Variable Cost, Fixed Cost, dan CVP lewat Kasus Bluebird</h1>
+  <p>Penjelasan sederhana tentang cara memakai informasi akuntansi untuk merencanakan laba. Kasus ICE (taksi konvensional) versus EV (taksi listrik) dipakai sebagai contoh latihan, bukan untuk menyatakan bahwa salah satunya pasti lebih menguntungkan.</p>
+  <div class="tags"><span class="tag">Biaya variabel & tetap</span><span class="tag">Margin kontribusi</span><span class="tag">BEP</span><span class="tag">Target laba</span><span class="tag">Skenario tarif</span></div>
+</div></header>
+<div class="layout">
+  <nav class="nav" aria-label="Daftar isi"><strong>Daftar isi</strong>
+    <a href="#inti">1. Inti tugas</a><a href="#rumusan">2. Rumusan masalah</a><a href="#biaya">3. Jenis biaya</a><a href="#cvp">4. Cara kerja CVP</a><a href="#simulasi">5. Simulasi ICE vs EV</a><a href="#tarif">6. Jika tarif turun</a><a href="#kinerja">7. Evaluasi laba</a><a href="#presentasi">8. Bahan presentasi</a>
+  </nav>
+  <main>
+    <section class="section" id="inti">
+      <h2>1. Sebenarnya tugas ini meminta kita melakukan apa?</h2>
+      <p class="lead">Bukan hanya mengenalkan Bluebird. Kita perlu menunjukkan <b>bagaimana biaya dan pendapatan memengaruhi laba</b>, lalu memakai hasil hitungan itu untuk memberi saran kepada manajemen.</p>
+      <div class="steps">
+        <div class="step"><b>Pahami biaya.</b><br>Biaya mana yang berubah ketika taksi berjalan lebih banyak? Mana yang relatif tetap dalam satu tahun?</div>
+        <div class="step"><b>Hitung menggunakan CVP.</b><br>Berapa sisa pendapatan setelah biaya variabel? Berapa pendapatan atau kilometer yang dibutuhkan agar tidak rugi?</div>
+        <div class="step"><b>Uji skenario.</b><br>Apa yang terjadi jika tarif turun 5% atau 10%, sementara biaya tidak turun dengan kecepatan yang sama?</div>
+        <div class="step"><b>Tarik kesimpulan.</b><br>Gunakan hasil hitungan untuk menyarankan cara menjaga margin dan merencanakan target laba.</div>
+      </div>
+      <div class="callout"><b>Inti sederhananya:</b> data perusahaan → klasifikasi biaya → hitungan CVP → skenario → rekomendasi.</div>
+    </section>
+
+    <section class="section" id="rumusan">
+      <h2>2. Mengapa rumusan masalahnya diarahkan ulang?</h2>
+      <div class="mini"><span class="small">Pertanyaan awal</span><p><b>“Apakah percepatan konversi ICE ke EV menguntungkan dan seberapa besar risiko perang tarif?”</b></p><p>Pertanyaan ini cukup luas. Menentukan apakah investasi EV layak dalam jangka panjang biasanya juga membutuhkan analisis investasi, misalnya NPV atau payback period.</p></div>
+      <div class="mini" style="margin-top:12px"><span class="small">Pertanyaan yang lebih dekat dengan silabus</span><p><b>“Bagaimana perbedaan struktur biaya ICE dan EV serta perubahan tarif akibat persaingan memengaruhi margin kontribusi, titik impas, dan target laba Bluebird?”</b></p><p>Fokusnya jelas: variable/fixed cost dan CVP. Cerita EV dan persaingan tarif tetap dipakai sebagai konteks masalah perusahaan.</p></div>
+      <div class="callout blue"><b>Ingat:</b> CVP bisa membantu menilai dampak operasional terhadap laba. CVP sendiri belum cukup untuk menyimpulkan kelayakan investasi EV jangka panjang.</div>
+    </section>
+
+    <section class="section" id="biaya">
+      <h2>3. Apa bedanya biaya variabel dan biaya tetap?</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Biaya variabel</h3><p>Biaya yang totalnya cenderung berubah mengikuti tingkat aktivitas.</p><p><b>Contoh ICE:</b> bensin yang digunakan saat kendaraan menempuh perjalanan.</p><p><b>Contoh EV:</b> listrik yang dipakai untuk mengisi baterai sesuai jarak tempuh.</p></div>
+        <div class="mini"><h3>Biaya tetap</h3><p>Biaya yang totalnya relatif sama dalam periode dan rentang aktivitas tertentu.</p><p><b>Contoh yang mungkin:</b> asuransi tahunan atau penyusutan garis lurus.</p><p>Biaya tetap per kilometer bisa turun jika kendaraan dipakai lebih banyak, karena biaya tersebut tersebar ke lebih banyak kilometer.</p></div>
+      </div>
+      <h3>Contoh klasifikasi awal untuk kasus Bluebird</h3>
+      <div class="tablewrap"><table><thead><tr><th>Jenis kendaraan</th><th>Cenderung variabel</th><th>Cenderung tetap</th><th>Catatan</th></tr></thead><tbody>
+        <tr><td>ICE</td><td>Bensin; komponen perawatan sesuai pemakaian; komisi jika berdasarkan argo</td><td>Penyusutan garis lurus; asuransi/kontrak tertentu</td><td>Perawatan bisa campuran, tidak semuanya variabel.</td></tr>
+        <tr><td>EV</td><td>Listrik; komponen perawatan sesuai pemakaian; komisi jika berdasarkan argo</td><td>Penyusutan; asuransi; biaya kontrak atau infrastruktur tertentu</td><td>Biaya listrik kendaraan umumnya variabel; investasi stasiun pengisian berbeda.</td></tr>
+      </tbody></table></div>
+      <div class="callout red"><b>Penting:</b> laporan keuangan biasanya menyajikan akun biaya, bukan secara otomatis menamai semuanya “variabel” atau “tetap”. Pengelompokan biaya dalam tugas adalah hasil analisis dan harus dijelaskan sebagai klasifikasi/asumsi kelompok jika tidak ada data perilaku biaya yang rinci.</div>
+    </section>
+
+    <section class="section" id="cvp">
+      <h2>4. Bagaimana cara kerja CVP?</h2>
+      <p>CVP adalah cara sederhana untuk melihat hubungan antara pendapatan, biaya variabel, biaya tetap, dan laba.</p>
+      <h3>Istilah yang perlu dipahami</h3>
+      <div class="grid2">
+        <div class="mini"><h3>Margin kontribusi</h3><div class="formula">Pendapatan − biaya variabel</div><p>Bagian pendapatan yang tersisa untuk menutup biaya tetap dan setelah itu menghasilkan laba.</p></div>
+        <div class="mini"><h3>Rasio margin kontribusi</h3><div class="formula">Margin kontribusi ÷ pendapatan</div><p>Menunjukkan bagian setiap rupiah pendapatan yang menjadi margin kontribusi.</p></div>
+        <div class="mini"><h3>BEP (titik impas)</h3><div class="formula">Biaya tetap ÷ rasio margin kontribusi</div><p>Pendapatan saat laba operasi model sama dengan nol.</p></div>
+        <div class="mini"><h3>Target pendapatan</h3><div class="formula">(Biaya tetap + target laba) ÷ rasio margin kontribusi</div><p>Perkiraan pendapatan yang dibutuhkan untuk mencapai target laba operasi.</p></div>
+      </div>
+      <h3>Contoh sangat sederhana</h3>
+      <p>Misal pendapatan Rp100, biaya variabel Rp60, dan biaya tetap Rp25.</p>
+      <div class="tablewrap"><table><tbody>
+        <tr><th>Pendapatan</th><td>Rp100</td></tr><tr><th>Kurangi biaya variabel</th><td>Rp60</td></tr><tr><th>Margin kontribusi</th><td>Rp40 (rasio 40%)</td></tr><tr><th>Kurangi biaya tetap</th><td>Rp25</td></tr><tr><th>Laba operasi</th><td><b>Rp15</b></td></tr>
+      </tbody></table></div>
+      <p>Dengan biaya tetap Rp25 dan rasio margin kontribusi 40%, BEP-nya Rp25 ÷ 40% = <b>Rp62,5</b>. Di atas pendapatan itu, model menghasilkan laba; di bawahnya, model menghasilkan rugi.</p>
+      <p class="small">CVP mengasumsikan kondisi seperti tarif, biaya per unit aktivitas, dan bauran layanan cukup stabil dalam rentang analisis. Jika asumsi ini tidak terpenuhi, hasilnya harus dibaca dengan hati-hati.</p>
+    </section>
+
+    <section class="section" id="simulasi">
+      <h2>5. Simulasi ICE versus EV</h2>
+      <p>Berikut ilustrasi dari angka yang muncul di draft presentasi. Angka selain tarif yang dirujuk ke publikasi <b>merupakan asumsi latihan</b>, bukan biaya internal Bluebird. Ubah angkanya untuk melihat dampak terhadap hasil.</p>
+      <p><span class="pill assume">Asumsi simulasi</span> Tarif ICE Rp5.660/km menggunakan bauran jarak asumsi; tarif EV Rp6.300/km; komisi 45%; biaya variabel non-pengemudi ICE Rp1.133/km dan EV Rp567/km; biaya tetap tahunan ICE Rp64,8 juta dan EV Rp102 juta; jarak tahunan 45.000 km.</p>
+      <div class="calc">
+        <h3 style="margin-top:0">Ubah asumsi simulasi</h3>
+        <div class="controls">
+          <div class="field"><label for="fareICE">Tarif ICE (Rp/km)</label><input id="fareICE" type="number" min="0" step="10" value="5660"><small>Tarif rata-rata ilustratif.</small></div>
+          <div class="field"><label for="fareEV">Tarif EV (Rp/km)</label><input id="fareEV" type="number" min="0" step="10" value="6300"><small>Tarif ilustratif untuk pembanding.</small></div>
+          <div class="field"><label for="commission">Komisi sebagai % dari tarif</label><input id="commission" type="number" min="0" max="100" step="1" value="45"><small>Asumsi 45%, bukan fakta terverifikasi.</small></div>
+          <div class="field"><label for="km">Jarak tempuh per tahun (km)</label><input id="km" type="number" min="1" step="500" value="45000"></div>
+          <div class="field"><label for="vcICE">Biaya variabel non-pengemudi ICE (Rp/km)</label><input id="vcICE" type="number" min="0" step="10" value="1133"></div>
+          <div class="field"><label for="vcEV">Biaya variabel non-pengemudi EV (Rp/km)</label><input id="vcEV" type="number" min="0" step="10" value="567"></div>
+          <div class="field"><label for="fcICE">Biaya tetap ICE (Rp/tahun)</label><input id="fcICE" type="number" min="0" step="100000" value="64800000"></div>
+          <div class="field"><label for="fcEV">Biaya tetap EV (Rp/tahun)</label><input id="fcEV" type="number" min="0" step="100000" value="102000000"></div>
+          <div class="field"><label for="drop">Penurunan tarif yang diuji (%)</label><input id="drop" type="number" min="0" max="100" step="1" value="10"></div>
+        </div>
+        <button class="btn" id="calculate">Hitung ulang</button>
+        <div class="results" aria-live="polite">
+          <div class="result"><div class="label">Margin kontribusi ICE per km</div><div class="value" id="cmICE">—</div></div>
+          <div class="result"><div class="label">Margin kontribusi EV per km</div><div class="value" id="cmEV">—</div></div>
+          <div class="result"><div class="label">Laba operasi model ICE/tahun</div><div class="value" id="profitICE">—</div></div>
+          <div class="result"><div class="label">Laba operasi model EV/tahun</div><div class="value" id="profitEV">—</div></div>
+          <div class="result"><div class="label">BEP ICE (km/tahun)</div><div class="value" id="bepICE">—</div></div>
+          <div class="result"><div class="label">BEP EV (km/tahun)</div><div class="value" id="bepEV">—</div></div>
+          <div class="result"><div class="label">Laba ICE setelah tarif turun</div><div class="value" id="downICE">—</div></div>
+          <div class="result"><div class="label">Laba EV setelah tarif turun</div><div class="value" id="downEV">—</div></div>
+        </div>
+        <div style="margin-top:16px"><b>Perbandingan laba model per tahun</b>
+          <div class="barrow"><span>ICE normal</span><div class="barbg"><div class="bar" id="barICE"></div></div><span id="barTextICE">—</span></div>
+          <div class="barrow"><span>EV normal</span><div class="barbg"><div class="bar ev" id="barEV"></div></div><span id="barTextEV">—</span></div>
+        </div>
+        <div class="callout blue" id="interpretation">Tekan “Hitung ulang” untuk melihat hasil.</div>
+      </div>
+      <p class="small">Model sederhana ini mengasumsikan komisi pengemudi berubah bersama tarif, tetapi biaya variabel non-pengemudi per kilometer dan biaya tetap tahunan tidak berubah. Model tidak memasukkan waktu tunggu, kilometer kosong, buka pintu, insentif, pajak, biaya pendanaan, nilai sisa, atau utilisasi berbeda. Hasil tidak boleh disebut sebagai laba aktual Bluebird.</p>
+    </section>
+
+    <section class="section" id="tarif">
+      <h2>6. Kenapa penurunan tarif berbeda dari penurunan volume?</h2>
+      <div class="grid2">
+        <div class="mini"><h3>Tarif turun</h3><p>Jumlah perjalanan bisa saja tetap, tetapi pendapatan dari setiap kilometer turun. Kalau biaya energi, pengemudi, dan biaya lainnya tidak turun sebanding, margin per kilometer akan mengecil.</p><p><b>Yang diuji:</b> berapa margin kontribusi dan laba setelah tarif berubah?</p></div>
+        <div class="mini"><h3>Volume turun</h3><p>Tarif per perjalanan bisa tetap, tetapi perjalanan atau kilometer berkurang. Biaya variabel yang mengikuti jarak umumnya ikut turun, sementara biaya tetap tetap harus dibayar.</p><p><b>Yang diuji:</b> berapa dampak penurunan volume terhadap laba dengan asumsi CVP?</p></div>
+      </div>
+      <div class="callout red"><b>Jangan gunakan DOL secara otomatis untuk semua kasus.</b> DOL membantu memperkirakan sensitivitas laba terhadap perubahan volume dalam asumsi CVP. Untuk perubahan tarif, lebih tepat hitung ulang pendapatan dan biaya variabel sesuai perilaku biayanya.</div>
+      <p>Jika kasusnya adalah tarif taksi Bluebird turun, pastikan juga cakupan datanya tepat. Apabila hanya tarif taksi yang turun, jangan langsung mengurangi seluruh pendapatan konsolidasian Bluebird, karena perusahaan juga memiliki bisnis non-taksi.</p>
+    </section>
+
+    <section class="section" id="kinerja">
+      <h2>7. Apa yang dimaksud evaluasi kinerja laba?</h2>
+      <p>Bagian ini menilai apa yang benar-benar terjadi pada kinerja keuangan perusahaan. Berbeda dari simulasi CVP, angka pada tabel ini seharusnya diambil dari laporan keuangan resmi.</p>
+      <div class="tablewrap"><table><thead><tr><th>Ukuran</th><th>Pertanyaan sederhana</th><th>Apa yang ditunjukkan?</th></tr></thead><tbody>
+        <tr><td>Pertumbuhan pendapatan</td><td>Apakah penjualan bertambah?</td><td>Perubahan skala aktivitas atau pendapatan.</td></tr>
+        <tr><td>Pertumbuhan beban langsung</td><td>Apakah biaya utama bertambah lebih cepat?</td><td>Potensi tekanan pada laba bruto.</td></tr>
+        <tr><td>Margin bruto</td><td>Berapa bagian pendapatan yang tersisa setelah beban pokok/langsung?</td><td>Ruang untuk menutup biaya berikutnya dan memperoleh laba.</td></tr>
+        <tr><td>Margin usaha</td><td>Berapa laba usaha untuk setiap rupiah pendapatan?</td><td>Kinerja operasi setelah beban usaha.</td></tr>
+        <tr><td>Laba bersih</td><td>Berapa laba setelah komponen di bawah laba usaha dan pajak?</td><td>Hasil akhir menurut definisi laba yang dipilih.</td></tr>
+      </tbody></table></div>
+      <div class="callout"><b>Contoh cara menjelaskan temuan:</b> “Jika beban langsung tumbuh lebih cepat daripada pendapatan, margin bruto dapat tertekan. Namun, untuk mengetahui penyebabnya kita perlu memeriksa rincian biaya dan perubahan bauran layanan, bukan hanya melihat persentase pertumbuhan.”</div>
+    </section>
+
+    <section class="section" id="presentasi">
+      <h2>8. Checklist sebelum PPT dikumpulkan</h2>
+      <ul class="checklist">
+        <li>Rumusan masalah menanyakan dampak struktur biaya dan tarif terhadap margin kontribusi, BEP, serta target laba.</li>
+        <li>Angka laporan keuangan diberi sumber, tahun, satuan, dan definisi yang jelas.</li>
+        <li>Biaya tetap/variabel yang tidak dikonfirmasi secara eksplisit disebut sebagai klasifikasi atau asumsi kelompok.</li>
+        <li>Perbandingan ICE dan EV memakai periode, kilometer, tarif, dan asumsi yang setara.</li>
+        <li>Skenario penurunan tarif dipisahkan dari skenario penurunan volume.</li>
+        <li>Tarif rata-rata berbobot dijelaskan sebagai hasil asumsi bauran jarak, jika tidak ada data rata-rata aktual.</li>
+        <li>Kesimpulan tidak mengklaim EV pasti lebih menguntungkan hanya karena listrik per kilometer lebih murah.</li>
+        <li>Jika ingin menilai kelayakan investasi EV jangka panjang, tambahkan analisis investasi seperti NPV atau payback period.</li>
+      </ul>
+      <h3>Sumber yang sebaiknya dibuka dan dicantumkan</h3>
+      <p class="source"><a href="https://www.bluebirdgroup.com/storage/documents/6a014fe8ebcd1.pdf" target="_blank" rel="noopener">Laporan Tahunan & Keberlanjutan Bluebird 2025 (PDF)</a></p>
+      <p class="source"><a href="https://info.bluebirdgroup.com/about/financial-statement?lang=id" target="_blank" rel="noopener">Halaman resmi laporan keuangan Bluebird</a></p>
+      <p class="small">Keterangan: penjelasan konsep pada halaman ini adalah panduan belajar. Angka dan tarif yang muncul di kalkulator berasal dari asumsi pada draft presentasi yang dibahas; verifikasi data aktual pada dokumen resmi sebelum dikutip dalam tugas.</p>
+    </section>
+  </main>
+</div>
+<footer class="foot">Materi belajar mandiri · Akuntansi Manajerial · Studi kasus PT Blue Bird Tbk</footer>
+<script>
+const idr = new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0});
+const num = new Intl.NumberFormat('id-ID',{maximumFractionDigits:0});
+function val(id){const n=Number(document.getElementById(id).value);return Number.isFinite(n)?n:0;}
+function money(n){return idr.format(n).replace('IDR','Rp').replace(/\u00a0/g,' ');}
+function calcOne(fare,commPct,vc,fc,km,dropPct){
+  const rate=Math.min(100,Math.max(0,commPct))/100;
+  const cm=fare*(1-rate)-vc;
+  const annualCM=cm*km;
+  const profit=annualCM-fc;
+  const bep=cm>0?fc/cm:Infinity;
+  const downFare=fare*(1-Math.min(100,Math.max(0,dropPct))/100);
+  const cmDown=downFare*(1-rate)-vc;
+  const profitDown=cmDown*km-fc;
+  return {cm,annualCM,profit,bep,profitDown,cmDown};
+}
+function show(id,text){document.getElementById(id).textContent=text;}
+function shortMoney(n){if(!Number.isFinite(n))return 'Tidak tercapai';let abs=Math.abs(n),sign=n<0?'−':'';if(abs>=1e9)return sign+'Rp'+(abs/1e9).toLocaleString('id-ID',{maximumFractionDigits:2})+' M';if(abs>=1e6)return sign+'Rp'+(abs/1e6).toLocaleString('id-ID',{maximumFractionDigits:1})+' jt';return money(n);}
+function calculate(){
+  const fareI=Math.max(0,val('fareICE')),fareE=Math.max(0,val('fareEV')),comm=Math.min(100,Math.max(0,val('commission'))),km=Math.max(0,val('km')),vcI=Math.max(0,val('vcICE')),vcE=Math.max(0,val('vcEV')),fcI=Math.max(0,val('fcICE')),fcE=Math.max(0,val('fcEV')),drop=Math.min(100,Math.max(0,val('drop')));
+  const ice=calcOne(fareI,comm,vcI,fcI,km,drop),ev=calcOne(fareE,comm,vcE,fcE,km,drop);
+  show('cmICE',money(ice.cm)+'/km');show('cmEV',money(ev.cm)+'/km');show('profitICE',shortMoney(ice.profit));show('profitEV',shortMoney(ev.profit));show('bepICE',Number.isFinite(ice.bep)?num.format(Math.ceil(ice.bep))+' km':'Tidak tercapai');show('bepEV',Number.isFinite(ev.bep)?num.format(Math.ceil(ev.bep))+' km':'Tidak tercapai');show('downICE',shortMoney(ice.profitDown));show('downEV',shortMoney(ev.profitDown));
+  const max=Math.max(Math.abs(ice.profit),Math.abs(ev.profit),1);document.getElementById('barICE').style.width=(Math.max(0,ice.profit)/max*100)+'%';document.getElementById('barEV').style.width=(Math.max(0,ev.profit)/max*100)+'%';show('barTextICE',shortMoney(ice.profit));show('barTextEV',shortMoney(ev.profit));
+  let msg='Dengan asumsi yang dimasukkan, ';if(ice.profit>=0&&ev.profit>=0){msg+='kedua model menghasilkan laba operasi positif dalam simulasi. ';}else if(ice.profit<0&&ev.profit<0){msg+='kedua model menghasilkan rugi operasi dalam simulasi. ';}else{msg+=(ice.profit>=0?'model ICE':'model EV')+' menghasilkan laba positif, sedangkan model lainnya belum menutup biaya tetap. ';}
+  msg+='Saat tarif turun '+drop+'%, laba model ICE berubah menjadi '+shortMoney(ice.profitDown)+' dan model EV menjadi '+shortMoney(ev.profitDown)+'. Hasil ini sangat bergantung pada asumsi; bukan prediksi resmi Bluebird.';show('interpretation',msg);
+}
+document.getElementById('calculate').addEventListener('click',calculate);
+document.querySelectorAll('.field input').forEach(el=>el.addEventListener('change',calculate));
+calculate();
+</script>
+</body>
+</html>
