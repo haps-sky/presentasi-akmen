@@ -274,10 +274,13 @@ main a{color:var(--blue);text-underline-offset:2px;overflow-wrap:anywhere}main a
 </tbody></table></div>
 <p class="small">Sumber tarif EV 2024: <a href="https://www.fortuneidn.com/news/tarif-taksi-bluebird-reguler-dan-listrik-naik-di-2024-segini-jadinya-00-my5jv-jv50tg" target="_blank" rel="noopener">Fortune Indonesia, “Tarif Taksi Bluebird Reguler dan Listrik Naik di 2024”</a> (lihat daftar sumber di bagian 10): tarif EV Jabodetabek Rp6.300/km; tarif ICE 2024 bertingkat menurut jarak. Rp5.660/km pada simulasi ICE adalah rata-rata model dengan bauran jarak asumsi 60/30/10 (jarak &lt;10 km Rp6.000; 10–30 km Rp5.200; &gt;30 km Rp5.000). Tarif aktual mengikuti argometer, jarak, dan ketentuan layanan. Seluruh biaya selain tarif acuan tetap merupakan asumsi latihan, bukan biaya aktual per kendaraan Bluebird.</p>
 <div class="calc">
-<h3 style="margin-top:0">Ubah asumsi simulasi</h3>
+<h3 style="margin-top:0">Pilih model simulasi</h3>
+<div class="field" style="margin-bottom:12px"><label for="modelSelect">Model yang digunakan</label><select id="modelSelect"><option value="1">Model 1 — Model HTML (tarif publikasi + asumsi kelompok)</option><option value="2">Model 2 — Model Word teman (tarif sama + biaya per armada)</option></select></div>
+<div class="callout blue" id="modelBasis" style="margin-bottom:14px"><b>Model 1 — Model HTML.</b> Tarif ICE Rp5.660/km berasal dari rata-rata ilustratif dengan bauran jarak asumsi 60% × Rp6.000, 30% × Rp5.200, dan 10% × Rp5.000. Tarif EV Rp6.300/km mengacu pada publikasi Fortune Indonesia untuk Jabodetabek tahun 2024. Komisi 45%, biaya variabel non-pengemudi, biaya tetap tahunan, dan jarak tahunan 45.000 km adalah asumsi simulasi HTML, bukan data biaya resmi Blue Bird.</div>
 <div class="controls">
 <div class="field"><label for="fareICE">Tarif ICE (Rp/km)</label><input id="fareICE" min="0" step="10" type="number" value="5660"/><small>Tarif rata-rata ilustratif.</small></div>
 <div class="field"><label for="fareEV">Tarif EV (Rp/km)</label><input id="fareEV" min="0" step="10" type="number" value="6300"/><small>Tarif ilustratif untuk pembanding.</small></div>
+<div class="callout blue" id="effectiveFareDisplay" style="grid-column:1/-1;margin:0">Tarif yang dipakai: ICE Rp5.660/km; EV Rp6.300/km.</div>
 <div class="field"><label for="commission">Komisi sebagai % dari tarif</label><input id="commission" max="100" min="0" step="1" type="number" value="45"/><small>Asumsi 45%, bukan fakta terverifikasi.</small></div>
 <div class="field"><label for="km">Jarak tempuh per tahun (km)</label><input id="km" min="1" step="500" type="number" value="45000"/></div>
 <div class="field"><label for="vcICE">Biaya variabel non-pengemudi ICE (Rp/km)</label><input id="vcICE" min="0" step="10" type="number" value="1133"/></div>
@@ -307,6 +310,7 @@ main a{color:var(--blue);text-underline-offset:2px;overflow-wrap:anywhere}main a
 <div class="result"><div class="label">Pemenang pada jarak input</div><div class="value" id="winner">—</div></div>
 </div>
 <div class="callout blue" id="indifferenceNote">Titik indiferen akan dihitung dari asumsi yang sedang dimasukkan.</div>
+<div class="callout" id="fareModeNote">Mode saat ini: tarif ICE dan EV berbeda, sesuai input masing-masing.</div>
 <h3>Sensitivitas tarif: dampak pada CM dan laba</h3>
 <p class="small">Persentase perubahan tarif diterapkan ke tarif ICE dan EV masing-masing. Kilometer, biaya non-pengemudi per km, komisi persentase, dan biaya tetap dianggap tetap selain efek komisi yang mengikuti tarif.</p>
 <div class="tablewrap"><table><thead><tr><th>Perubahan tarif</th><th>CM ICE/km</th><th>CM EV/km</th><th>Laba ICE/tahun</th><th>Laba EV/tahun</th></tr></thead><tbody id="tariffScenarioRows"></tbody></table></div>
@@ -530,9 +534,25 @@ function calcOne(fare,commPct,vc,fc,km,dropPct){
 }
 function show(id,text){document.getElementById(id).textContent=text;}
 function shortMoney(n){if(!Number.isFinite(n))return 'Tidak tercapai';let abs=Math.abs(n),sign=n<0?'−':'';if(abs>=1e9)return sign+'Rp'+(abs/1e9).toLocaleString('id-ID',{maximumFractionDigits:2})+' M';if(abs>=1e6)return sign+'Rp'+(abs/1e6).toLocaleString('id-ID',{maximumFractionDigits:1})+' jt';return money(n);}
+function applyModelDefaults(model){
+  const set=(id,v)=>{document.getElementById(id).value=String(v)};
+  const basis=document.getElementById('modelBasis');
+  if(model==='2'){
+    set('fareICE',3457);set('fareEV',3457);set('commission',20.16);set('vcICE',983);set('vcEV',430);
+    set('fcICE',244875*365);set('fcEV',369533*365);set('km',180*365);set('targetProfit',82472*365);set('drop',10);
+    basis.innerHTML='<b>Model 2 — Model Word teman.</b> Tarif bersama Rp3.457/km dihitung dari pendapatan Rp622.302 ÷ 180 km, bukan tarif resmi yang berlaku untuk semua perjalanan. Biaya proporsional 20,16% berasal dari kalibrasi model; biaya energi + perawatan adalah Rp983/km untuk ICE dan Rp430/km untuk EV. Biaya tetap Rp244.875/hari (ICE) dan Rp369.533/hari (EV). Untuk kalkulator tahunan, biaya tetap, jarak 180 km/hari, dan target laba Rp82.472/hari dikalikan 365 hari. Harga kendaraan, konsumsi energi, perawatan, dan tambahan biaya tetap EV adalah asumsi Word, bukan data internal per kendaraan.';
+  }else{
+    set('fareICE',5660);set('fareEV',6300);set('commission',45);set('vcICE',1133);set('vcEV',567);
+    set('fcICE',64800000);set('fcEV',102000000);set('km',45000);set('targetProfit',30000000);set('drop',10);
+    basis.innerHTML='<b>Model 1 — Model HTML.</b> Tarif ICE Rp5.660/km berasal dari rata-rata ilustratif dengan bauran jarak asumsi 60% × Rp6.000, 30% × Rp5.200, dan 10% × Rp5.000. Tarif EV Rp6.300/km mengacu pada publikasi Fortune Indonesia untuk Jabodetabek tahun 2024. Komisi 45%, biaya variabel non-pengemudi, biaya tetap tahunan, dan jarak tahunan 45.000 km adalah asumsi simulasi HTML, bukan data biaya resmi Blue Bird.';
+  }
+  calculate();
+}
 function calculate(){
-  const fareI=Math.max(0,val('fareICE')),fareE=Math.max(0,val('fareEV')),comm=Math.min(100,Math.max(0,val('commission'))),km=Math.max(0,val('km')),vcI=Math.max(0,val('vcICE')),vcE=Math.max(0,val('vcEV')),fcI=Math.max(0,val('fcICE')),fcE=Math.max(0,val('fcEV')),drop=Math.min(100,Math.max(0,val('drop'))),target=Math.max(0,val('targetProfit'));
+  const fareI=Math.max(0,val('fareICE')),fareEVInput=Math.max(0,val('fareEV')),fareE=fareEVInput,comm=Math.min(100,Math.max(0,val('commission'))),km=Math.max(0,val('km')),vcI=Math.max(0,val('vcICE')),vcE=Math.max(0,val('vcEV')),fcI=Math.max(0,val('fcICE')),fcE=Math.max(0,val('fcEV')),drop=Math.min(100,Math.max(0,val('drop'))),target=Math.max(0,val('targetProfit'));
   const ice=calcOne(fareI,comm,vcI,fcI,km,drop),ev=calcOne(fareE,comm,vcE,fcE,km,drop);
+  show('fareModeNote','Model ini menggunakan tarif ICE dan EV sesuai input masing-masing. Untuk perbandingan tarif yang sama, gunakan Model 2.');
+  show('effectiveFareDisplay','Tarif yang dipakai dalam perhitungan: ICE '+money(fareI)+'/km dan EV '+money(fareEVInput)+'/km.');
   show('cmICE',money(ice.cm)+'/km');show('cmEV',money(ev.cm)+'/km');show('profitICE',shortMoney(ice.profit));show('profitEV',shortMoney(ev.profit));show('bepICE',Number.isFinite(ice.bep)?num.format(Math.ceil(ice.bep))+' km':'Tidak tercapai');show('bepEV',Number.isFinite(ev.bep)?num.format(Math.ceil(ev.bep))+' km':'Tidak tercapai');show('downICE',shortMoney(ice.profitDown));show('downEV',shortMoney(ev.profitDown));
   const targetI=ice.cm>0?(fcI+target)/ice.cm:Infinity,targetE=ev.cm>0?(fcE+target)/ev.cm:Infinity;
   show('targetICE',Number.isFinite(targetI)?num.format(Math.ceil(targetI))+' km':'Tidak tercapai');show('targetEV',Number.isFinite(targetE)?num.format(Math.ceil(targetE))+' km':'Tidak tercapai');
@@ -548,7 +568,7 @@ function calculate(){
   msg+='Saat tarif turun '+drop+'%, laba model ICE berubah menjadi '+shortMoney(ice.profitDown)+' dan model EV menjadi '+shortMoney(ev.profitDown)+'. Hasil ini sangat bergantung pada asumsi; bukan prediksi resmi Bluebird.';show('interpretation',msg);
   const scenarioBody=document.getElementById('tariffScenarioRows');
   scenarioBody.innerHTML='';
-  [-10,-5,0,3,5].forEach(pct=>{
+  (document.getElementById('modelSelect').value==='2'?[5,3,0,-5,-10,-15]:[-10,-5,0,3,5]).forEach(pct=>{
     const f=1+pct/100, cmi=fareI*f*(1-comm/100)-vcI, cme=fareE*f*(1-comm/100)-vcE, pi=cmi*km-fcI, pe=cme*km-fcE;
     const tr=document.createElement('tr');
     [((pct>0?'+':'')+pct+'%'),money(cmi),money(cme),shortMoney(pi),shortMoney(pe)].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.appendChild(td);});
@@ -557,6 +577,7 @@ function calculate(){
 }
 document.getElementById('calculate').addEventListener('click',calculate);
 document.querySelectorAll('.field input').forEach(el=>el.addEventListener('change',calculate));
+document.getElementById('modelSelect').addEventListener('change',e=>applyModelDefaults(e.target.value));
 calculate();
 </script>
 <script>
