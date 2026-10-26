@@ -664,6 +664,24 @@ setDeckMode('v1');</script>
 .cv-accordion>.section{margin:0;padding:18px;border:0;border-radius:0;box-shadow:none}
 .cv-accordion>.section>h2{display:none}
 @media(max-width:600px){.cv-accordion>summary{padding:13px 14px;gap:10px}.cv-accordion>.section{padding:13px}}
+
+select{max-width:100%;min-width:0;box-sizing:border-box;text-overflow:ellipsis}
+/* Tabel bisa digeser di layar kecil */
+.swipe-hint{display:none;font-size:.8rem;color:var(--muted);margin:6px 0 4px}
+@media(max-width:700px){
+.tablewrap{border:1px solid var(--line);border-radius:12px;margin:6px 0 12px;
+background:linear-gradient(to right,#fff 30%,rgba(255,255,255,0)) left/36px 100% no-repeat local,
+linear-gradient(to left,#fff 30%,rgba(255,255,255,0)) right/36px 100% no-repeat local,
+linear-gradient(to right,rgba(16,43,75,.22),rgba(16,43,75,0)) left/12px 100% no-repeat scroll,
+linear-gradient(to left,rgba(16,43,75,.22),rgba(16,43,75,0)) right/12px 100% no-repeat scroll}
+.tablewrap table{margin:0;font-size:.88rem}
+.tablewrap th,.tablewrap td{overflow-wrap:normal;word-break:normal;padding:10px 12px;min-width:108px}
+.tablewrap th:first-child,.tablewrap td:first-child{position:sticky;left:0;z-index:1;min-width:140px;max-width:190px;box-shadow:1px 0 0 var(--line)}
+.tablewrap th:first-child{background:var(--navy);z-index:2}
+.tablewrap td:first-child{background:#fff}
+.tablewrap tbody tr:nth-child(even) td:first-child{background:#f7f9fc}
+.tablewrap .source-table th:first-child,.tablewrap .source-table td:first-child{position:static;box-shadow:none;max-width:none}
+}
 </style>
 <script>
 document.addEventListener('DOMContentLoaded', function(){
@@ -689,5 +707,25 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
+<script>
+(function(){
+function setup(){
+  document.querySelectorAll('.tablewrap').forEach(function(w){
+    var t=w.querySelector('table'); if(!t) return;
+    var r=t.querySelector('tr'); var cols=r?r.children.length:2;
+    t.style.minWidth = cols>=4 ? '640px' : (cols===3 ? '520px' : '');
+    var hint=w.previousElementSibling;
+    if(!hint||!hint.classList||!hint.classList.contains('swipe-hint')){
+      hint=document.createElement('div'); hint.className='swipe-hint'; hint.textContent='\u2194 Geser tabel ke samping';
+      w.parentNode.insertBefore(hint,w);
+      w.addEventListener('scroll',function(){hint.dataset.done='1';hint.style.display='none';},{passive:true});
+    }
+    var over=w.scrollWidth>w.clientWidth+2;
+    hint.style.display=(over&&!hint.dataset.done)?'block':'none';
+  });
+}
+window.addEventListener('load',setup); window.addEventListener('resize',setup);
+})();
+</script>
 </body>
 </html>
